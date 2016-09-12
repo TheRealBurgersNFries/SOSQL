@@ -7,9 +7,12 @@ SQL Object definitions for SSS and SOSIAS
 ### Objects
 Devices
 * Defines all of the medical devices stored by SOS
+
 Containers
 * Defines the different kinds of containers objects can be stored and/or shipped in
+
 User
 * Keeps track of the different users and types of users
+
 Supplies
 * Defines the different kinds of medical supplies collected and shipped by SOS
