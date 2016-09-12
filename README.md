@@ -5,14 +5,14 @@ This project is done in collaboration, as storing a Database of inventory and ha
 ## SOSQL
 SQL Object definitions for SSS and SOSIAS
 ### Objects
-Devices
+#### Devices
 * Defines all of the medical devices stored by SOS
 
-Containers
+#### Containers
 * Defines the different kinds of containers objects can be stored and/or shipped in
 
-User
+#### User
 * Keeps track of the different users and types of users
 
-Supplies
+#### Supplies
 * Defines the different kinds of medical supplies collected and shipped by SOS
