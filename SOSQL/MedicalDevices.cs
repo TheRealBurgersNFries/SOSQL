@@ -27,7 +27,7 @@ namespace SOSQL
         private string Notes;
         private string RestrictedMaterials;
         private string Image;
-        private List<float> Dimensions;
+        public List<float> Dimensions;
         private List<Container> AttachedContainers;
         private bool OrientableX;
         private bool OrientableY;
