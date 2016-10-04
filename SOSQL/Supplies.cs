@@ -15,10 +15,10 @@ namespace SOSQL
         private float TotalValue;
         private int Count;
         private string Pallet;
-        private string BoxType;
+        public Container Box;
     
         public Supply (string _Name, int _BoxNumber, float _Weight, float _Value, int _Count,
-            string _Pallet, string _BoxType)
+            string _Pallet, Container _Box)
         {
             Name = _Name;
             BoxNumber = _BoxNumber;
@@ -27,7 +27,7 @@ namespace SOSQL
             Count = _Count;
             TotalValue = Count * Value;
             Pallet = _Pallet;
-            BoxType = _BoxType;
+            Box = _Box;
         }
     }
 }

@@ -27,8 +27,10 @@ namespace SOSQL
         private string Notes;
         private string RestrictedMaterials;
         private string Image;
-        public List<float> Dimensions;
-        private List<Container> AttachedContainers;
+        private List<float> Dimensions;
+        public float Volume;
+        public List<Container> AttachedContainers;
+        public float ContainerVolumes;
         private bool OrientableX;
         private bool OrientableY;
         private bool OrientableZ;
@@ -67,7 +69,13 @@ namespace SOSQL
             RestrictedMaterials = _RestrictedMaterials;
             Image = _Image;
             Dimensions = _Dimenstions;
+            Volume = Dimensions[0] * Dimensions[1] * Dimensions[2];
             AttachedContainers = _AttachedContainers;
+            ContainerVolumes = 0;
+            foreach(Container _Container in AttachedContainers)
+            {
+                ContainerVolumes += _Container.InternalVolume;
+            }
             OrientableX = _OrientableX;
             OrientableY = _OrientableY;
             OrientableZ = _OrientableY;
