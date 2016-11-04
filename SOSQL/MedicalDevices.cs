@@ -10,6 +10,8 @@ namespace SOSQL
     {
         private int IdentifierNumber;
         private string TestStatus;
+        private string TestedBy;
+        private string TestedDate;
         private string Category;
         private string Location;
         private string DonorName;
@@ -44,7 +46,7 @@ namespace SOSQL
         private bool Approved; //assuming this is for equipment approval
         private string Query;
 
-        public MedicalDevice(int _IdentifierNumber, string _TestStatus, string _Category, string _Location,
+        public MedicalDevice(int _IdentifierNumber, string _TestStatus, string _TestedBy, string _TestedDate, string _Category, string _Location,
             string _DonorName, string _DonorGroup, float _DeviceWeight, string _DateReceived, string _Description,
             string _Manufacturer, string _ModelNumber, int _Quantity, float _Value, string _AssignedDestination,
             string _ShippingStatus, DateTime _ShipDate, string _Notes,  string _RestrictedMaterials, 
@@ -54,6 +56,8 @@ namespace SOSQL
         {
             IdentifierNumber = _IdentifierNumber;
             TestStatus = _TestStatus;
+            TestedBy = _TestedBy;
+            TestedDate = _TestedDate;
             Category = _Category;
             Location = _Location;
             DonorName = _DonorName;
