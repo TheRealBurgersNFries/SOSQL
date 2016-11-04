@@ -43,6 +43,7 @@
     <Compile Include="Container.cs" />
     <Compile Include="MedicalDevices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Donations.cs" />
     <Compile Include="Supplies.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
