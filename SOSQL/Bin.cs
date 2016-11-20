@@ -146,7 +146,6 @@ namespace SOSQL
             }
             return result;
         }
-        }
 
     }
 }
