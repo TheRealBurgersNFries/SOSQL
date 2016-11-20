@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOSQL
 {
-    public class MedicalDevice
+    public class MedicalDevice : Package
     {
         private int IdentifierNumber;
         private string TestStatus;
@@ -34,7 +34,7 @@ namespace SOSQL
         private int DimensionY;
         private int DimensionZ;
         public float Volume;
-        public List<Container> AttachedContainers; //also if this is needed to be stored in database, will need to insert column
+        public List<Bin> AttachedContainers; //also if this is needed to be stored in database, will need to insert column
         public float ContainerVolumes;
         private bool OrientableX;
         private bool OrientableY;
@@ -50,7 +50,7 @@ namespace SOSQL
             string _DonorName, string _DonorGroup, float _DeviceWeight, DateTime _DateReceived, string _Description,
             string _Manufacturer, string _ModelNumber, int _Quantity, float _Value, string _AssignedDestination,
             string _ShippingStatus, DateTime _ShipDate, string _Notes,  string _RestrictedMaterials, 
-            string _Image, string _ReceivedBy, int _DimensionX, int _DimensionY, int _DimensionZ, List<Container> _AttachedContainers, bool _OrientableX, 
+            string _Image, string _ReceivedBy, int _DimensionX, int _DimensionY, int _DimensionZ, List<Bin> _AttachedContainers, bool _OrientableX, 
             bool _OrientableY, bool _OrientableZ, bool _StackableX, bool _StackableY, bool _StackableZ, 
             List<MedicalDevice> _RelatedObjects)
         {
@@ -81,11 +81,6 @@ namespace SOSQL
             DimensionZ = _DimensionZ;
             Volume = DimensionX * DimensionY * DimensionZ;
             AttachedContainers = _AttachedContainers;
-            ContainerVolumes = 0;
-            foreach(Container _Container in AttachedContainers)
-            {
-                ContainerVolumes += _Container.InternalVolume;
-            }
             OrientableX = _OrientableX;
             OrientableY = _OrientableY;
             OrientableZ = _OrientableY;
@@ -94,7 +89,11 @@ namespace SOSQL
             StackableZ = _StackableZ;
             RelatedObjects = _RelatedObjects;
             Approved = false;
+        }
 
+        public override List<Bin> GetBins()
+        {
+            return AttachedContainers;
         }
     }
 }
