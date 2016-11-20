@@ -6,15 +6,15 @@ namespace SOSQL
 {
     public abstract class Drawable3D
     {
-        private int Height;
-        private int Width;
-        private int Depth;
+        public int Height;
+        public int Width;
+        public int Depth;
 
-        private int X;
-        private int Y;
-        private int Z;
+        public int X;
+        public int Y;
+        public int Z;
 
-        private int Transparency;
+        internal int Transparency;
 
         public GeometryModel3D GetModel()
         {

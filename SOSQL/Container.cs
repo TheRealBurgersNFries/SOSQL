@@ -12,16 +12,8 @@ namespace SOSQL
         private int InternalWidth;
         private int InternalHeight;
         private int InternalDepth;
-        private int Width;
-        private int Height;
-        private int Depth;
-        private int X = 0;
-        private int Y = 0;
-        private int Z = 0;
-        private int Transparency = 20;
         private List<Bin> Bins;
         private List<Package> Packages;
-        private int PackageCount = 0;
         private float WeightLimit;
         public float Weight;
         private bool RequiresBalance;
@@ -30,6 +22,10 @@ namespace SOSQL
             int _ExternalWidth, int _ExternalHeight, int _ExternalDepth, float _WeightLimit,
             float _Weight, bool _RequiresBalance)
         {
+            X = 0;
+            Y = 0;
+            Z = 0;
+            Transparency = 20;
             // Define the internal dimensions of the Container
             InternalWidth = _InternalWidth;
             InternalHeight = _InternalHeight;
@@ -92,10 +88,6 @@ namespace SOSQL
             foreach (Bin bin in Bins.ToArray())
             {
                 Bins.Remove(bin);
-                if (Bins.Count == 0)
-                {
-                    int i = 1;
-                }
                 Bins.AddRange(bin.Subtract(package.ToRect()));
             }
             return true;

@@ -32,6 +32,7 @@ namespace SOSQL
             Pallet = _Pallet;
             PalletLocation = _PalletLocation;
             Box = _Box;
+            Transparency = 200;
         }
         public override List<Bin> GetBins()
         {

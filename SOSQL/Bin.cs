@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Media.Media3D;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace SOSQL
 {
@@ -45,6 +46,7 @@ namespace SOSQL
             }
             catch (Exception e)
             {
+                Debug.Write(e.Message);
                 return new Bin(0, 0, 0, 0, 0, 0);
             }
         }

@@ -27,13 +27,11 @@ namespace SOSQL
         private string ShippingStatus;
         private DateTime ShipDate;
         private string Notes;
-        private string RestrictedMaterials; //still needed? need to insert column in database if so
         private string Image;
         private string ReceivedBy;
         private int DimensionX;
         private int DimensionY;
         private int DimensionZ;
-        public float Volume;
         public List<Bin> AttachedContainers; //also if this is needed to be stored in database, will need to insert column
         public float ContainerVolumes;
         private bool OrientableX;
@@ -49,11 +47,12 @@ namespace SOSQL
         public MedicalDevice(int _IdentifierNumber, string _TestStatus, string _TestedBy, DateTime _TestedDate, string _Category, string _Location,
             string _DonorName, string _DonorGroup, float _DeviceWeight, DateTime _DateReceived, string _Description,
             string _Manufacturer, string _ModelNumber, int _Quantity, float _Value, string _AssignedDestination,
-            string _ShippingStatus, DateTime _ShipDate, string _Notes,  string _RestrictedMaterials, 
-            string _Image, string _ReceivedBy, int _DimensionX, int _DimensionY, int _DimensionZ, List<Bin> _AttachedContainers, bool _OrientableX, 
+            string _ShippingStatus, DateTime _ShipDate, string _Notes, string _Image, string _ReceivedBy, 
+            int _DimensionX, int _DimensionY, int _DimensionZ, List<Bin> _AttachedContainers, bool _OrientableX, 
             bool _OrientableY, bool _OrientableZ, bool _StackableX, bool _StackableY, bool _StackableZ, 
             List<MedicalDevice> _RelatedObjects)
         {
+            Transparency = 200;
             IdentifierNumber = _IdentifierNumber;
             TestStatus = _TestStatus;
             TestedBy = _TestedBy;
@@ -73,13 +72,11 @@ namespace SOSQL
             ShippingStatus = _ShippingStatus;
             ShipDate = _ShipDate;
             Notes = _Notes;
-            RestrictedMaterials = _RestrictedMaterials;
             Image = _Image;
             ReceivedBy = _ReceivedBy;
             DimensionX = _DimensionX;
             DimensionY = _DimensionY;
             DimensionZ = _DimensionZ;
-            Volume = DimensionX * DimensionY * DimensionZ;
             AttachedContainers = _AttachedContainers;
             OrientableX = _OrientableX;
             OrientableY = _OrientableY;
