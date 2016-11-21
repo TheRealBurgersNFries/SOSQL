@@ -6,51 +6,51 @@ using System.Threading.Tasks;
 
 namespace SOSQL
 {
-    public class MedicalDevice
+    public class MedicalDevice : Package
     {
-        private int IdentifierNumber;
-        private string TestStatus;
-        private string TestedBy;
-        private DateTime TestedDate;
-        private string Category;
-        private string Location;
-        private string DonorName;
-        private string DonorGroup;
-        private float DeviceWeight;
-        private DateTime DateReceived;
-        private string Description;
-        private string Manufacturer;
-        private string ModelNumber;
-        private int Quantity;
-        private float Value;
-        private string AssignedDestination;
-        private string ShippingStatus;
-        private DateTime ShipDate;
-        private string Notes;
-        private string RestrictedMaterials; //still needed? need to insert column in database if so
-        private string Image;
-        private string ReceivedBy;
-        private int DimensionX;
-        private int DimensionY;
-        private int DimensionZ;
+        public int IdentifierNumber { get; set; }
+        public string TestStatus { get; set; }
+        public string TestedBy { get; set; }
+        public DateTime TestedDate { get; set; }
+        public string Category { get; set; }
+        public string Location { get; set; }
+        public string DonorName { get; set; }
+        public string DonorGroup { get; set; }
+        public float DeviceWeight { get; set; }
+        public DateTime DateReceived { get; set; }
+        public string Description { get; set; }
+        public string Manufacturer { get; set; }
+        public string ModelNumber { get; set; }
+        public int Quantity { get; set; }
+        public float Value { get; set; }
+        public string AssignedDestination { get; set; }
+        public string ShippingStatus { get; set; }
+        public DateTime ShipDate { get; set; }
+        public string Notes { get; set; }
+        public string RestrictedMaterials { get; set; } //still needed? need to insert column in database if so
+        public string Image { get; set; }
+        public string ReceivedBy { get; set; }
+        public int DimensionX { get; set; }
+        public int DimensionY { get; set; }
+        public int DimensionZ { get; set; }
         public float Volume;
-        public List<Container> AttachedContainers; //also if this is needed to be stored in database, will need to insert column
+        public List<Bin> AttachedContainers; //also if this is needed to be stored in database, will need to insert column
         public float ContainerVolumes;
-        private bool OrientableX;
-        private bool OrientableY;
-        private bool OrientableZ;
-        private bool StackableX;
-        private bool StackableY;
-        private bool StackableZ;
-        private List<MedicalDevice> RelatedObjects;
-        private bool Approved; //assuming this is for equipment approval
-        private string Query;
+        public bool OrientableX { get; set; }
+        public bool OrientableY { get; set; }
+        public bool OrientableZ { get; set; }
+        public bool StackableX { get; set; }
+        public bool StackableY { get; set; }
+        public bool StackableZ { get; set; }
+        public List<MedicalDevice> RelatedObjects { get; set; }
+        public bool Approved { get; set; } //assuming this is for equipment approval
+        public string Query { get; set; }
 
         public MedicalDevice(int _IdentifierNumber, string _TestStatus, string _TestedBy, DateTime _TestedDate, string _Category, string _Location,
             string _DonorName, string _DonorGroup, float _DeviceWeight, DateTime _DateReceived, string _Description,
             string _Manufacturer, string _ModelNumber, int _Quantity, float _Value, string _AssignedDestination,
             string _ShippingStatus, DateTime _ShipDate, string _Notes,  string _RestrictedMaterials, 
-            string _Image, string _ReceivedBy, int _DimensionX, int _DimensionY, int _DimensionZ, List<Container> _AttachedContainers, bool _OrientableX, 
+            string _Image, string _ReceivedBy, int _DimensionX, int _DimensionY, int _DimensionZ, List<Bin> _AttachedContainers, bool _OrientableX, 
             bool _OrientableY, bool _OrientableZ, bool _StackableX, bool _StackableY, bool _StackableZ, 
             List<MedicalDevice> _RelatedObjects)
         {
@@ -81,11 +81,6 @@ namespace SOSQL
             DimensionZ = _DimensionZ;
             Volume = DimensionX * DimensionY * DimensionZ;
             AttachedContainers = _AttachedContainers;
-            ContainerVolumes = 0;
-            foreach(Container _Container in AttachedContainers)
-            {
-                ContainerVolumes += _Container.InternalVolume;
-            }
             OrientableX = _OrientableX;
             OrientableY = _OrientableY;
             OrientableZ = _OrientableY;
@@ -94,7 +89,10 @@ namespace SOSQL
             StackableZ = _StackableZ;
             RelatedObjects = _RelatedObjects;
             Approved = false;
-
+        }
+        public override List<Bin> GetBins()
+        {
+            return AttachedContainers;
         }
     }
 }
