@@ -90,6 +90,7 @@ namespace SOSQL
             RelatedObjects = _RelatedObjects;
             Approved = false;
         }
+
         public override List<Bin> GetBins()
         {
             return AttachedContainers;

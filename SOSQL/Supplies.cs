@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOSQL
 {
-    public class Supply
+    public class Supply : Package
     {
         private string Description;
         private int BoxNumber;
@@ -32,6 +32,10 @@ namespace SOSQL
             Pallet = _Pallet;
             PalletLocation = _PalletLocation;
             Box = _Box;
+        }
+        public override List<Bin> GetBins()
+        {
+            return new List<Bin>();
         }
     }
 }
