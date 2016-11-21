@@ -77,7 +77,7 @@ namespace SOSQL
             var _B = Rand.Next(0, 256);
             Color _FillColor = Color.FromArgb((byte)Transparency, (byte)_R, (byte)_G, (byte)_B);
             model.Material = new DiffuseMaterial(new SolidColorBrush(_FillColor));
-            model.BackMaterial = new DiffuseMaterial(new SolidColorBrush(_FillColor));
+            //model.BackMaterial = new DiffuseMaterial(new SolidColorBrush(_FillColor));
 
             Transform3DGroup both = new Transform3DGroup();
             both.Children.Add(new ScaleTransform3D(Width, Height, Depth));

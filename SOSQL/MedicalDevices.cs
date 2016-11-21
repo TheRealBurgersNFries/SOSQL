@@ -29,9 +29,6 @@ namespace SOSQL
         private string Notes;
         private string Image;
         private string ReceivedBy;
-        private int DimensionX;
-        private int DimensionY;
-        private int DimensionZ;
         public List<Bin> AttachedContainers; //also if this is needed to be stored in database, will need to insert column
         public float ContainerVolumes;
         private bool OrientableX;
@@ -63,7 +60,7 @@ namespace SOSQL
             DonorGroup = _DonorGroup;
             DeviceWeight = _DeviceWeight;
             DateReceived = _DateReceived;
-            Description = _Description;
+            Name = _Description;
             Manufacturer = _Manufacturer;
             ModelNumber = _ModelNumber;
             Quantity = _Quantity;
@@ -74,9 +71,9 @@ namespace SOSQL
             Notes = _Notes;
             Image = _Image;
             ReceivedBy = _ReceivedBy;
-            DimensionX = _DimensionX;
-            DimensionY = _DimensionY;
-            DimensionZ = _DimensionZ;
+            Width = _DimensionX;
+            Height = _DimensionY;
+            Depth = _DimensionZ;
             AttachedContainers = _AttachedContainers;
             OrientableX = _OrientableX;
             OrientableY = _OrientableY;
@@ -86,6 +83,23 @@ namespace SOSQL
             StackableZ = _StackableZ;
             RelatedObjects = _RelatedObjects;
             Approved = false;
+        }
+
+        public MedicalDevice(int _DimensionX, int _DimensionY, int _DimensionZ)
+        {
+            _Width = _DimensionX;
+            _Height = _DimensionY;
+            _Depth = _DimensionZ;
+            _X = 0;
+            _Y = 0;
+            _Z = 0;
+            OrientableZ = true;
+            OrientableY = false;
+            OrientableX = false;
+            StackableZ = true;
+            StackableY = false;
+            StackableX = false;
+            Name = "TestPackage";
         }
 
         public override List<Bin> GetBins()

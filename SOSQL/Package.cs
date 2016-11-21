@@ -10,15 +10,15 @@ namespace SOSQL
     public abstract class Package : Drawable3D
     {
         private Rect3D Rect;
-        public new int Width { get { return (int)Rect.SizeX; } set { Rect.SizeX = value; } }
-        public new int Depth { get { return (int)Rect.SizeZ; } set { Rect.SizeZ = value; } }
-        public new int Height { get { return (int)Rect.SizeY; } set { Rect.SizeY = value; } }
+        public int _Width { get { return (int)Rect.SizeX; } set { Rect.SizeX = value; Width = value; } }
+        public int _Depth { get { return (int)Rect.SizeZ; } set { Rect.SizeZ = value; Depth = value; } }
+        public int _Height { get { return (int)Rect.SizeY; } set { Rect.SizeY = value; Height = value; } }
 
-        public new int X { get { return (int)Rect.X; } set { Rect.X = value; } }
-        public new int Y { get { return (int)Rect.Y; } set { Rect.Y = value; } }
-        public new int Z { get { return (int)Rect.Z; } set { Rect.Z = value; } }
+        public int _X { get { return (int)Rect.X; } set { Rect.X = value; X = value; } }
+        public int _Y { get { return (int)Rect.Y; } set { Rect.Y = value; Y = value; } }
+        public int _Z { get { return (int)Rect.Z; } set { Rect.Z = value; Z = value; } }
 
-        
+        public string Name;
 
         public Rect3D ToRect()
         {

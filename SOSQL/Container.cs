@@ -16,11 +16,10 @@ namespace SOSQL
         private List<Package> Packages;
         private float WeightLimit;
         public float Weight;
-        private bool RequiresBalance;
 
         public Container(int _InternalWidth, int _InternalHeight, int _InternalDepth,
             int _ExternalWidth, int _ExternalHeight, int _ExternalDepth, float _WeightLimit,
-            float _Weight, bool _RequiresBalance)
+            float _Weight)
         {
             X = 0;
             Y = 0;
@@ -41,10 +40,10 @@ namespace SOSQL
             // Requires balance is, I believe a competely worthless value. - Shayne Hemminger
             WeightLimit = _WeightLimit;
             Weight = _Weight;
-            RequiresBalance = _RequiresBalance;
 
             // These are for the packing Logic, there are going to be a lot of functions to deal with these.
             Bins = new List<Bin>();
+            Bins.Add(new Bin(0, 0, 0, Width, Height, Depth));
             Packages = new List<Package>();
         }
 
