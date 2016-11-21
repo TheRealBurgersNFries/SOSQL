@@ -49,7 +49,7 @@ namespace SOSQL
             bool _OrientableY, bool _OrientableZ, bool _StackableX, bool _StackableY, bool _StackableZ, 
             List<MedicalDevice> _RelatedObjects)
         {
-            Transparency = 200;
+            Transparency = 20;
             IdentifierNumber = _IdentifierNumber;
             TestStatus = _TestStatus;
             TestedBy = _TestedBy;
@@ -71,9 +71,9 @@ namespace SOSQL
             Notes = _Notes;
             Image = _Image;
             ReceivedBy = _ReceivedBy;
-            Width = _DimensionX;
-            Height = _DimensionY;
-            Depth = _DimensionZ;
+            _Width = _DimensionX;
+            _Height = _DimensionY;
+            _Depth = _DimensionZ;
             AttachedContainers = _AttachedContainers;
             OrientableX = _OrientableX;
             OrientableY = _OrientableY;
