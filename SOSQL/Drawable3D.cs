@@ -72,11 +72,17 @@ namespace SOSQL
 
             Random Rand = new Random();
 
-            var _R = Rand.Next(0, 256);
-            var _G = Rand.Next(0, 256);
-            var _B = Rand.Next(0, 256);
-            Color _FillColor = Color.FromArgb((byte)Transparency, (byte)_R, (byte)_G, (byte)_B);
-            model.Material = new DiffuseMaterial(new SolidColorBrush(_FillColor));
+            var _R = Rand.Next(20, 256);
+            var _G = Rand.Next(20, 256);
+            var _B = Rand.Next(20, 256);
+
+            MaterialGroup Materials = new MaterialGroup();
+            Color _FillColor = Color.FromArgb(55, (byte)_R, (byte)_G, (byte)_B);
+            Materials.Children.Add(new DiffuseMaterial(new SolidColorBrush(_FillColor)));
+            Color _Emission = Color.FromArgb((byte)Transparency, 0, 0, 0);
+            Materials.Children.Add(new EmissiveMaterial(new SolidColorBrush(_Emission)));
+            model.Material = Materials;
+
             //model.BackMaterial = new DiffuseMaterial(new SolidColorBrush(_FillColor));
 
             Transform3DGroup both = new Transform3DGroup();

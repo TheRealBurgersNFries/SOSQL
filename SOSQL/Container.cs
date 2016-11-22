@@ -21,19 +21,19 @@ namespace SOSQL
             int _ExternalWidth, int _ExternalHeight, int _ExternalDepth, float _WeightLimit,
             float _Weight)
         {
-            X = 0;
-            Y = 0;
-            Z = 0;
-            Transparency = 20;
+            X = -1;
+            Y = -1;
+            Z = -1;
+            Transparency = 100;
             // Define the internal dimensions of the Container
             InternalWidth = _InternalWidth;
             InternalHeight = _InternalHeight;
             InternalDepth = _InternalDepth;
             
             // Define the external dimensions of the Container
-            Width = _ExternalWidth;
-            Height = _ExternalHeight;
-            Depth = _ExternalDepth;
+            Width = _ExternalWidth + 2;
+            Height = _ExternalHeight + 2;
+            Depth = _ExternalDepth + 2;
 
             // Get the mass of the container and it's weight limit
             // Weight limit should never be an issue but should be kept in mind.
@@ -43,7 +43,7 @@ namespace SOSQL
 
             // These are for the packing Logic, there are going to be a lot of functions to deal with these.
             Bins = new List<Bin>();
-            Bins.Add(new Bin(0, 0, 0, Width, Height, Depth));
+            Bins.Add(new Bin(0, 0, 0, Width - 2, Height - 2, Depth - 2));
             Packages = new List<Package>();
         }
 
@@ -58,14 +58,20 @@ namespace SOSQL
         {
             bool collision = false;
             if (Bins.Count == 0) return false;
+
+            Bins = Bins.OrderBy(b => b.Z).ToList();
+            Bins = Bins.OrderBy(b => b.Y).ToList();
+            Bins = Bins.OrderBy(b => b.X).ToList();
+            
+            
             foreach (Bin bin in Bins)
             {
                 // Ensure that we start by assuming that it isn't colliding
                 collision = false;
                 // Move the box to the bin coordinates
-                package.X = bin.X;
-                package.Y = bin.Y;
-                package.Z = bin.Z;
+                package._X = bin.X;
+                package._Y = bin.Y;
+                package._Z = bin.Z;
                 // Does it fit?
                 if (((Width - package.X) >= package.Width) && ((Height - package.Y) >= package.Height) && ((Depth - package.Z) >= package.Depth))
                 {

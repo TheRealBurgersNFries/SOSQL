@@ -25,9 +25,9 @@ namespace SOSQL
             Rect = rect;
         }
 
-        public Bin(int x, int y, int z, int idth, int height, int depth)
+        public Bin(int x, int y, int z, int width, int height, int depth)
         {
-            Rect3D rect = new Rect3D(x, y, z, Width, height, depth);
+            Rect3D rect = new Rect3D(x, y, z, width, height, depth);
             Rect = rect;
         }
 
