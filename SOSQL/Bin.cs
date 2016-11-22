@@ -121,7 +121,7 @@ namespace SOSQL
                 bin = Create(a, b, h, g, i, j); if (bin.Volume() > 0) result.Add(bin);
                 bin = Create(b, c, h, g, i, j); if (bin.Volume() > 0) result.Add(bin);
                 bin = Create(c, d, h, g, i, j); if (bin.Volume() > 0) result.Add(bin);
-                
+
                 // Generate all but the center bin in the center section
                 bin = Create(a, b, f, e, j, k); if (bin.Volume() > 0) result.Add(bin);
                 bin = Create(b, c, f, e, j, k); if (bin.Volume() > 0) result.Add(bin);
@@ -146,7 +146,5 @@ namespace SOSQL
             }
             return result;
         }
-        }
-
     }
 }
