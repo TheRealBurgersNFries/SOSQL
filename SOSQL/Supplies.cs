@@ -8,15 +8,15 @@ namespace SOSQL
 {
     public class Supply : Package
     {
-        private string Description;
-        private int BoxNumber;
-        private float Weight;
-        private int Count;
-        private float Value;
-        private float TotalValue;
-        private DateTime Expiration;
-        private string Pallet;
-        private string PalletLocation;
+        private string Description { get; set; }
+        private int BoxNumber { get; set; }
+        private float Weight { get; set; }
+        private int Count { get; set; }
+        private float Value { get; set; }
+        private float TotalValue { get; set; }
+        private DateTime Expiration { get; set; }
+        private string Pallet { get; set; }
+        private string PalletLocation { get; set; }
         public Container Box;
     
         public Supply (string _Description, int _BoxNumber, float _Weight, int _Count, float _Value, DateTime _Expiration,
