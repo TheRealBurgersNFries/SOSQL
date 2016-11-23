@@ -18,9 +18,10 @@ namespace SOSQL
         public string Pallet { get; set; }
         public string PalletLocation { get; set; }
         public Container Box;
+        public int PalletIndex { get; set; }
     
         public Supply (string _Description, int _BoxNumber, float _Weight, int _Count, float _Value, DateTime _Expiration,
-            string _Pallet, string _PalletLocation, Container _Box)
+            string _Pallet, string _PalletLocation, Container _Box, int _PalletIndex)
         {
             Description = _Description;
             BoxNumber = _BoxNumber;
@@ -32,6 +33,7 @@ namespace SOSQL
             Pallet = _Pallet;
             PalletLocation = _PalletLocation;
             Box = _Box;
+            PalletIndex = _PalletIndex;
         }
         public override List<Bin> GetBins()
         {
