@@ -7,13 +7,14 @@ using System.Windows.Media.Media3D;
 
 namespace SOSQL
 {
+    [Serializable]
     public class Container : Drawable3D
     {
         private int InternalWidth;
         private int InternalHeight;
         private int InternalDepth;
         private List<Bin> Bins;
-        private List<Package> Packages;
+        public List<Package> Packages;
         private float WeightLimit;
         public float Weight;
 
@@ -21,10 +22,13 @@ namespace SOSQL
             int _ExternalWidth, int _ExternalHeight, int _ExternalDepth, float _WeightLimit,
             float _Weight)
         {
+            Red = 100;
+            Green = 100;
+            Blue = 120;
             X = -1;
             Y = -1;
             Z = -1;
-            Transparency = 100;
+            Transparency = 40;
             // Define the internal dimensions of the Container
             InternalWidth = _InternalWidth;
             InternalHeight = _InternalHeight;

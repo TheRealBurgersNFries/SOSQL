@@ -8,6 +8,7 @@ using System.Diagnostics;
 
 namespace SOSQL
 {
+    [Serializable]
     public class Bin
     {
         private Rect3D Rect;

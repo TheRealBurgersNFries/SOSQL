@@ -7,6 +7,7 @@ using System.Windows.Media.Media3D;
 
 namespace SOSQL
 {
+    [Serializable]
     public abstract class Package : Drawable3D
     {
         private Rect3D Rect;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOSQL
 {
+    [Serializable]
     public class MedicalDevice : Package
     {
         private int IdentifierNumber;
@@ -49,7 +50,7 @@ namespace SOSQL
             bool _OrientableY, bool _OrientableZ, bool _StackableX, bool _StackableY, bool _StackableZ, 
             List<MedicalDevice> _RelatedObjects)
         {
-            Transparency = 20;
+            Transparency = 200;
             IdentifierNumber = _IdentifierNumber;
             TestStatus = _TestStatus;
             TestedBy = _TestedBy;
@@ -84,9 +85,24 @@ namespace SOSQL
             RelatedObjects = _RelatedObjects;
             Approved = false;
         }
+		public MedicalDevice(string _Name, int width, int height, int depth, bool orientx, bool orienty, bool orientz, bool stackx, bool stacky, bool stackz)
+        {
+            Transparency = 200;
+            Description = _Name;
+            Width = width;
+            Height = height;
+            Depth = depth;
+            OrientableX = orientx;
+            OrientableY = orienty;
+            OrientableZ = orientz;
+            StackableX = stackx;
+            StackableY = stacky;
+            StackableZ = stackz;
+        }
 
         public MedicalDevice(int _DimensionX, int _DimensionY, int _DimensionZ)
         {
+            Transparency = 200;
             _Width = _DimensionX;
             _Height = _DimensionY;
             _Depth = _DimensionZ;

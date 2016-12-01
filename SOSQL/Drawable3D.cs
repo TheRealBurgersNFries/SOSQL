@@ -4,6 +4,7 @@ using System.Windows.Media.Media3D;
 
 namespace SOSQL
 {
+    [Serializable]
     public abstract class Drawable3D
     {
         public int Height;
@@ -14,9 +15,15 @@ namespace SOSQL
         public int Y;
         public int Z;
 
+        public int? Red = null;
+        public int? Green = null;
+        public int? Blue = null;
+
+        
+
         internal int Transparency;
 
-        public GeometryModel3D GetModel()
+        public GeometryModel3D GetModel(Random Rand)
         {
             GeometryModel3D model = new GeometryModel3D();
             MeshGeometry3D mesh = new MeshGeometry3D();
@@ -68,20 +75,42 @@ namespace SOSQL
             mesh.TriangleIndices.Add(6);
             mesh.TriangleIndices.Add(5);
             mesh.TriangleIndices.Add(7);
+            //Triangle 11
+            mesh.TriangleIndices.Add(0);
+            mesh.TriangleIndices.Add(4);
+            mesh.TriangleIndices.Add(6);
+            //Triangle 12
+            mesh.TriangleIndices.Add(0);
+            mesh.TriangleIndices.Add(1);
+            mesh.TriangleIndices.Add(4);
+
+
+
             model.Geometry = mesh;
 
-            Random Rand = new Random();
-
-            var _R = Rand.Next(20, 256);
-            var _G = Rand.Next(20, 256);
-            var _B = Rand.Next(20, 256);
+            
+            if (Red == null)
+                Red = Rand.Next(20, 256);
+            if (Green == null)
+                Green = Rand.Next(20, 256);
+            if (Blue == null)
+                Blue = Rand.Next(20, 256);
 
             MaterialGroup Materials = new MaterialGroup();
-            Color _FillColor = Color.FromArgb(55, (byte)_R, (byte)_G, (byte)_B);
+            Color _FillColor = Color.FromArgb((byte)Transparency, (byte)Red, (byte)Green, (byte)Blue);
             Materials.Children.Add(new DiffuseMaterial(new SolidColorBrush(_FillColor)));
-            Color _Emission = Color.FromArgb((byte)Transparency, 0, 0, 0);
+            Color _Emission = Color.FromArgb((byte)Transparency, (byte)Red, (byte)Green, (byte)Blue);
             Materials.Children.Add(new EmissiveMaterial(new SolidColorBrush(_Emission)));
+
+            MaterialGroup BackMaterials = new MaterialGroup();
+            _FillColor = Color.FromArgb((byte)Transparency, (byte)Red, (byte)Green, (byte)Blue);
+            BackMaterials.Children.Add(new DiffuseMaterial(new SolidColorBrush(_FillColor)));
+            _Emission = Color.FromArgb((byte)Transparency, (byte)Red, (byte)Green, (byte)Blue);
+            BackMaterials.Children.Add(new EmissiveMaterial(new SolidColorBrush(_Emission)));
+
+
             model.Material = Materials;
+            model.BackMaterial = BackMaterials;
 
             //model.BackMaterial = new DiffuseMaterial(new SolidColorBrush(_FillColor));
 
