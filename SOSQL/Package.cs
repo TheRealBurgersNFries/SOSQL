@@ -19,6 +19,18 @@ namespace SOSQL
         public int _Y { get { return (int)Rect.Y; } set { Rect.Y = value; Y = value; } }
         public int _Z { get { return (int)Rect.Z; } set { Rect.Z = value; Z = value; } }
 
+        public int sizeX;
+        public int sizeY;
+        public int sizeZ;
+
+        public bool OrientableX;
+        public bool OrientableY;
+        public bool OrientableZ;
+        public bool StackableX;
+        public bool StackableY;
+        public bool StackableZ;
+
+
         public string Name;
 
         public Rect3D ToRect()
@@ -33,5 +45,60 @@ namespace SOSQL
         }
 
         public abstract List<Bin> GetBins();
+
+        public void Rotate(int dimension, bool orientation)
+        { 
+            switch (dimension)
+            {
+                default:
+                    if (OrientableZ)
+                    {
+                        if (orientation)
+                        {
+                            _Width = sizeZ;
+                            _Depth = sizeX;
+                        }
+                        else
+                        {
+                            _Width = sizeX;
+                            _Depth = sizeZ;
+                        }
+                    }
+                    return;
+            case 2:
+                if (OrientableY)
+                {
+                    if (orientation)
+                    {
+                        _Height = sizeX;
+                        _Width = sizeY;
+                    }
+                    else
+                    {
+                        _Height = sizeX;
+                        _Depth = sizeY;
+                        _Width = sizeZ;
+                    }
+                }
+                return;
+            case 3:
+            if (OrientableZ)
+                {
+                    if (orientation)
+                    {
+                        _Height = sizeZ;
+                        _Depth = sizeY;
+                    }
+                    else
+                    {
+                        _Height = sizeZ;
+                        _Depth = sizeX;
+                        _Width = sizeY;
+                    }
+                }
+                return;
+            }
+
+        }
     }
 }

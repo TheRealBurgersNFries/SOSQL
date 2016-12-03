@@ -76,7 +76,24 @@ namespace SOSQL
                 package._X = bin.X;
                 package._Y = bin.Y;
                 package._Z = bin.Z;
+
+                Rect3D SupportChecker = new Rect3D(package.X, package.Y - 1, package.Z, package.Width, 1, package.Depth);
+                int supported = 0;
+                
+                foreach (Package other in Packages)
+                {
+                    Rect3D intersect = Rect3D.Intersect(SupportChecker, other.ToRect());
+                    collision = IsIntersect(intersect);
+                    if (collision)
+                    {
+                        supported += (int)intersect.SizeX * (int)intersect.SizeY;
+                    }
+                }
+                if (!(supported > (0.75 * (float)package._Width * (float)package._Width)) && Y > 0)
+                    collision = true;
+
                 // Does it fit?
+
                 if (((Width - package.X) >= package.Width) && ((Height - package.Y) >= package.Height) && ((Depth - package.Z) >= package.Depth))
                 {
                     //Does it collide?
@@ -88,6 +105,144 @@ namespace SOSQL
                     }
                     if (!collision) break;
                 }
+
+                package.Rotate(1, true);
+
+                SupportChecker = new Rect3D(package.X, package.Y - 1, package.Z, package.Width, 1, package.Depth);
+                supported = 0;
+                foreach (Package other in Packages)
+                {
+                    Rect3D intersect = Rect3D.Intersect(SupportChecker, other.ToRect());
+                    collision = IsIntersect(intersect);
+                    if (collision)
+                    {
+                        supported += (int)intersect.SizeX * (int)intersect.SizeY;
+                    }
+                }
+                if (!(supported > (0.75 * (float)package._Width * (float)package._Width)) && Y > 0)
+                    collision = true;
+
+                if (((Width - package.X) >= package.Width) && ((Height - package.Y) >= package.Height) && ((Depth - package.Z) >= package.Depth))
+                {
+                    //Does it collide?
+                    foreach (Package other in Packages)
+                    {
+                        Rect3D intersect = Rect3D.Intersect(package.ToRect(), other.ToRect());
+                        collision = IsIntersect(intersect);
+                        if (collision) break;
+                    }
+                    if (!collision) break;
+                }
+                package.Rotate(2, true);
+
+                SupportChecker = new Rect3D(package.X, package.Y - 1, package.Z, package.Width, 1, package.Depth);
+                supported = 0;
+                foreach (Package other in Packages)
+                {
+                    Rect3D intersect = Rect3D.Intersect(SupportChecker, other.ToRect());
+                    collision = IsIntersect(intersect);
+                    if (collision)
+                    {
+                        supported += (int)intersect.SizeX * (int)intersect.SizeY;
+                    }
+                }
+                if (!(supported > (0.75 * (float)package._Width * (float)package._Width)) && Y > 0)
+                    collision = true;
+
+                if (((Width - package.X) >= package.Width) && ((Height - package.Y) >= package.Height) && ((Depth - package.Z) >= package.Depth))
+                {
+                    //Does it collide?
+                    foreach (Package other in Packages)
+                    {
+                        Rect3D intersect = Rect3D.Intersect(package.ToRect(), other.ToRect());
+                        collision = IsIntersect(intersect);
+                        if (collision) break;
+                    }
+                    if (!collision) break;
+                }
+                package.Rotate(2, false);
+
+                SupportChecker = new Rect3D(package.X, package.Y - 1, package.Z, package.Width, 1, package.Depth);
+                supported = 0;
+                foreach (Package other in Packages)
+                {
+                    Rect3D intersect = Rect3D.Intersect(SupportChecker, other.ToRect());
+                    collision = IsIntersect(intersect);
+                    if (collision)
+                    {
+                        supported += (int)intersect.SizeX * (int)intersect.SizeY;
+                    }
+                }
+                if (!(supported > (0.75 * (float)package._Width * (float)package._Width)) && Y > 0)
+                    collision = true;
+
+                if (((Width - package.X) >= package.Width) && ((Height - package.Y) >= package.Height) && ((Depth - package.Z) >= package.Depth))
+                {
+                    //Does it collide?
+                    foreach (Package other in Packages)
+                    {
+                        Rect3D intersect = Rect3D.Intersect(package.ToRect(), other.ToRect());
+                        collision = IsIntersect(intersect);
+                        if (collision) break;
+                    }
+                    if (!collision) break;
+                }
+                package.Rotate(3, true);
+
+                SupportChecker = new Rect3D(package.X, package.Y - 1, package.Z, package.Width, 1, package.Depth);
+                supported = 0;
+                foreach (Package other in Packages)
+                {
+                    Rect3D intersect = Rect3D.Intersect(SupportChecker, other.ToRect());
+                    collision = IsIntersect(intersect);
+                    if (collision)
+                    {
+                        supported += (int)intersect.SizeX * (int)intersect.SizeY;
+                    }
+                }
+                if (!(supported > (0.75 * (float)package._Width * (float)package._Width)) && Y > 0)
+                    collision = true;
+
+                if (((Width - package.X) >= package.Width) && ((Height - package.Y) >= package.Height) && ((Depth - package.Z) >= package.Depth))
+                {
+                    //Does it collide?
+                    foreach (Package other in Packages)
+                    {
+                        Rect3D intersect = Rect3D.Intersect(package.ToRect(), other.ToRect());
+                        collision = IsIntersect(intersect);
+                        if (collision) break;
+                    }
+                    if (!collision) break;
+                }
+                package.Rotate(3, false);
+
+                SupportChecker = new Rect3D(package.X, package.Y - 1, package.Z, package.Width, 1, package.Depth);
+                supported = 0;
+                foreach (Package other in Packages)
+                {
+                    Rect3D intersect = Rect3D.Intersect(SupportChecker, other.ToRect());
+                    collision = IsIntersect(intersect);
+                    if (collision)
+                    {
+                        supported += (int)intersect.SizeX * (int)intersect.SizeY;
+                    }
+                }
+                if (!(supported > (0.75 * (float)package._Width * (float)package._Width)) && Y > 0)
+                    collision = true;
+
+                if (((Width - package.X) >= package.Width) && ((Height - package.Y) >= package.Height) && ((Depth - package.Z) >= package.Depth))
+                {
+                    //Does it collide?
+                    foreach (Package other in Packages)
+                    {
+                        Rect3D intersect = Rect3D.Intersect(package.ToRect(), other.ToRect());
+                        collision = IsIntersect(intersect);
+                        if (collision) break;
+                    }
+                    if (!collision) break;
+                }
+                package.Rotate(1, false);
+
                 collision = true;
             }
             // if it won't fit in the container GTFO

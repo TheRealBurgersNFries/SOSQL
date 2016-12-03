@@ -32,12 +32,6 @@ namespace SOSQL
         private string ReceivedBy;
         public List<Bin> AttachedContainers; //also if this is needed to be stored in database, will need to insert column
         public float ContainerVolumes;
-        private bool OrientableX;
-        private bool OrientableY;
-        private bool OrientableZ;
-        private bool StackableX;
-        private bool StackableY;
-        private bool StackableZ;
         private List<MedicalDevice> RelatedObjects;
         private bool Approved; //assuming this is for equipment approval
         private string Query;
@@ -89,9 +83,12 @@ namespace SOSQL
         {
             Transparency = 200;
             Description = _Name;
-            Width = width;
-            Height = height;
-            Depth = depth;
+            _Width = width;
+            _Height = height;
+            _Depth = depth;
+            sizeX = width;
+            sizeY = height;
+            sizeZ = depth;
             OrientableX = orientx;
             OrientableY = orienty;
             OrientableZ = orientz;
@@ -106,6 +103,9 @@ namespace SOSQL
             _Width = _DimensionX;
             _Height = _DimensionY;
             _Depth = _DimensionZ;
+            sizeX = _DimensionX;
+            sizeY =  _DimensionY;
+            sizeZ = _DimensionZ;
             _X = 0;
             _Y = 0;
             _Z = 0;
